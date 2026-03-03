@@ -53,8 +53,9 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify({ message: "Not found" }));
 });
 
-server.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(3000, () => console.log("Server running on port 3000"));
+}
 
 module.exports = server;
